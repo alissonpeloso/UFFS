@@ -109,14 +109,14 @@ node *LL(node *root){
 }
 
 node *LR(node *root){
-    node *newRoot = RR(root->left);
-    newRoot = LL(root);
+    root->left = RR(root->left);
+    node *newRoot = LL(root);
     return newRoot;
 }
 
 node *RL(node *root){
-    node *newRoot = LL(root->right);
-    newRoot = RR(root);
+    root->right = LL(root->right);
+    node *newRoot = RR(root);
     return newRoot;
 }
 
@@ -240,7 +240,7 @@ node *removeNode(node *root, int value){
 
 int main(void) {
     node *root = NULL;
-    int a[] = {1,2,3,4,5,6,7,8,9,10};
+    int a[] = {5,9,7};
     
     for(int i = 0; i < sizeof(a)/sizeof(int); i++){
         node *aux = malloc(sizeof(node));
@@ -251,8 +251,11 @@ int main(void) {
     printf("\n");
     print2DUtil(root, 0);
     printf("-----------------------------------------------------------------------------------\n");
-    root = removeNode(root, 4);
+    root = removeNode(root, 7);
     print2DUtil(root, 0);
+    node *aux2 = malloc(sizeof(node));
+    aux2->value = 10;
+    root = addNode(root,aux2);
     printf("\n");
 
     return 0;
