@@ -10,7 +10,7 @@ int main(){
         double ant = a[i-1];
         double ant2 = a[i-2];
         double ant3 = a[i-3];
-        a[i] = (6*ant) + (-12*ant2) + (8*ant3) + (i*pow(2,i));
+        a[i] = (6*ant) + (-12*ant2) + (8*ant3) + ((pow(i,2)+(2*i)-1)*pow(2,i));
     }
 
     for(int j = 0; j < 10; j++){
