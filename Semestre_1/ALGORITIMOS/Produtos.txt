@@ -1,7 +1,0 @@
-1,Miojo,0.6
-2,Salsicha,0.9
-3,pepino,5.9
-4,laranja,0.1
-8,Lasanha,8.99
-10,Tua mãe,0.0
-21,Sabonete,8.5
