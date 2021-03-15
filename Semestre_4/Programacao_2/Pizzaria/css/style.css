@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
+body{
+    overflow-x: hidden;
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#nav-bar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #F7F7F7;
+    height: 200px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0 8px 25px 0 rgb(0 0 0 / 4%);
+    box-sizing: border-box;
+    position: fixed;
+}
+
+header{
+    box-sizing: border-box;
+    align-self: center;
+    margin-left: 60px;
+}
+
+#header-logo{
+    width: 160px;
+}
+
+#nav-bar nav{
+    align-self: flex-end;
+    margin: 0px 25px 10px auto;
+}
+
+#nav-bar ul{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+#nav-bar li{
+    align-self: center;
+    padding: 10px 40px;
+}
+
+#nav-bar a{
+    transition: all 0.35s;
+    text-decoration: none;
+    color: inherit;
+    font-weight: bolder;
+    overflow-wrap:normal;
+    font-size: 17px;
+    white-space: nowrap;
+}
+
+#nav-bar a:hover{
+    color: #CF2B3E;
+}
+
+li #nav-pedido{
+    padding: 10px 40px;
+    color:#CF2B3E;
+    border-radius: 25px;
+    border-width: 2px;
+    border-style: solid;
+}
+
+li #nav-pedido:hover{
+    background-color: #CF2B3E;
+    color:#F7F7F7;
+    border-radius: 25px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #CF2B3E;
+}
+
+.content{
+    margin-top: 200px;
+}
+
+.img-dest{
+    padding: 0.83em;
+    box-sizing: border-box;
+    text-align: center;
+    background-image: url(../img/carrossel/pizza-destaque.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 80vh;
+    width: 100%;
+}
+
+.img-dest h1{
+    box-sizing: border-box;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    font-size: 9vh;
+    transition: all 0.35s;
+}
+
+.img-dest p{
+    font-size: 3.4vh;
+    color: #252323;
+    font-weight: 700;
+}
+
+.img-dest p b{
+    font-size: 3.4vh;
+    color:#CF2B3E;
+    transition: all 0.35s;
+}
+
+.img-dest p b:hover{
+    font-size: 3.6vh;
+}
+
+.img-dest a{
+    line-height: 18.5vh;
+    transition: all 0.35s;
+    text-decoration: none;
+    font-weight: bolder;
+    overflow-wrap: normal;
+    font-size: 2.3vh;
+    white-space: nowrap;
+    padding: 10px 50px;
+    color:#F7F7F7;
+    background-color: #CF2B3E;
+    border-radius: 25px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #CF2B3E;
+}
+
+.img-dest a:hover{
+    color:#CF2B3E;
+    background-color: transparent;
+}
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    width: 100%;
+}
+
+main .main-content{
+    min-width: 500px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+.main-content h2{
+    font-weight: bold;
+    font-size: 48px;
+    color: black;
+}
+
+.main-content h2 img{
+    transition: all 0.35s;
+    width: 68px;
+    vertical-align: text-bottom;
+    margin-right: 10px;
+}
+
+.main-content h2 img:hover{
+    transform: scale(1.15);
+}
+
+.main-content p{
+    font-weight: 200;
+    font-size: 20px;
+    color: #252323;
+}
+
+main #promotions{
+    right: 0px;
+    max-width: 500px;
+    border-radius: 0 0 0 25px;
+    margin: 0 0 auto auto;
+    padding: 50px;
+    background-color: #CF2B3E;
+    color: #FFEDEF;
+    align-content: center;
+}
+
+#promotions h3{
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+#promotions p{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+#promotions #moto-img{
+    transition: all 0.35s;
+    width: 180px;
+    margin: 100px auto;
+    display: block;
+}
+
+#promotions #moto-img:hover{
+    transform: scale(1.1);
+}
+
+footer{
+    background-color: #F7F7F7;
+    margin-top: 50px;
+}
+
+#social{
+    display: block;
+    flex-wrap: wrap;
+    margin: auto;
+    padding: 50px;
+    text-align: center;
+}
+
+#social img{
+    transition: all 0.35s;
+    width: 100px;
+    margin: 0 20px;
+}
+
+#social img:hover{
+    transform: scale(1.1);
+}
+
+footer #infos{
+    display: flex;
+    font-size: 18px;
+    font-weight: 300;
+    margin: 50px auto;
+    vertical-align: center;
+}
+
+footer #infos #footer-logo{
+    width: 160px;
+}
+
+footer #infos #logo{
+    margin: auto 40px auto auto;
+    width: 50vw;
+    text-align: end;
+}
+
+footer #infos #text{
+    margin: 0px auto auto 40px;
+    width: 50vw;
+}
+
+#copy{
+    width: 100%;
+    text-align: center;
+    background-color: #252323;
+    color: #F7F7F7;
+    padding: 1px;
+    bottom: 0;
+}
+
+#copy a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #F7F7F7;
+}

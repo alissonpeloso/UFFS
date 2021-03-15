@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="keywords" content="pizzaria, pizza, delivery">
-    <meta name="description" content="Página para realizar pedido">
+    <meta name="description" content="Página para cadastro de usuário">
     <meta name="author" content="Alisson Luan de Lima Peloso">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/favicon/favicon.ico"/>
-    <title>Pally | Pedido</title>
+    <title>Pally | Cadastro</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -32,13 +32,34 @@
     </div>
 
     <div class="content">
-        <!-- Conteúdo principal -->
         <main>
-            <!-- Formulário de pedido -->
             <section class="main-content">
-                <h2> <img src="img/icons/pizza.png" alt="book.png"> Pedido</h2>
-            </section>
+                <h2> <img src="img/icons/enter.png" alt="book.png"> Cadastro</h2>
+                <fieldset>
+                <legend>Faça seu Login</legend>
+                <form action="" method="POST">
+                    <div>
+                        <label for="email">E-mail</label><br>
+                        <input type="email" id="email" name="field_email" placeholder="example@domain.com"><br>
+                    </div>
     
+                    <div>
+                        <label for="password">Senha</label><br>
+                        <input type="password" id="password" name="field_password"><br>
+                    </div>
+    
+                    <div>
+                        <input type="submit" value="Fazer Login">
+                    </div>
+    
+                    <div>
+                        <input type="reset" value="Limpar Dados"><br>
+                    </div>
+                </form>
+                <a href="cadastro.html">Faça seu Cadastro</a>
+                </fieldset>
+            </section>
+
             <!-- Promoções -->
             <aside id="promotions">
                 <h3><b>Promoção:</b> Frete Grátis</h3>
