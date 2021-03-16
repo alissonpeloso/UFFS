@@ -9,7 +9,3 @@
 [submodule "Semestre_3/Pesquisa_e_Ordenação_de_Dados/Agenda_DrChapatin"]
 	path = Semestre_3/Pesquisa_e_Ordenação_de_Dados/Agenda_DrChapatin
 	url = https://github.com/alissonpeloso/Agenda_DrChapatin
-	
-[submodule "Semestre_4/Programacao_2/Pally"]
-	path = Semestre_4/Programacao_2/Pally
-	url = https://github.com/alissonpeloso/Pally
