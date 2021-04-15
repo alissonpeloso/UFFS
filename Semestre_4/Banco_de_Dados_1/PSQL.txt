@@ -1,0 +1,29 @@
+$ \l  ->  mostra as databases
+$ \c  ->  entrar no database
+$ \i  ->  rodar arquivo.sql
+
+$ drop database <nome_da_database>;
+
+$ create user <nome> password '<senha>';
+
+$ alter table <nome_da_tabela> add <o que vc quer adicionar>;
+
+$ select * from <tabela> where <coluna> like '%<termo>%';  => Porcentagem vai substituir vários caracteres.
+
+$ select * from <tabela> where <coluna> like '_<termo>_';  => Underline vai substituir um único caracter.
+
+$ select * from <tabela> where <colunaX>=2019 or <colunaX>=2018; 
+é igual a:
+$ select * from <tabela> where <colunaX> in (2018, 2019);
+
+$ select * from <tabela> where <colunaX> between 2017 and 2020; => vai pegar dos anos 2017, 2018, 2019, 2020. 
+
+Pode criar colunas aleatórias e pode mudar o nome usando o "as"
+$ select <coluna> as beterraba, 5 + 5 from <tabela>;
+
+ctrl + d  =>  quit
+
+*** DDL ***
+   - create
+   - drop
+   - alter
