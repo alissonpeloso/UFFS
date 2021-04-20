@@ -1,0 +1,40 @@
+1) update avaliacao SET coment = 'Uau! Took my breath away!!!' where coment = 'Uau! Tooke my breath away!!!';
+
+2) insert INTO avaliacao (coment,email, nestrelas, codf) values ('Super fã dos filmes Tubarão', 'jaws@gmail.com', 5, (select codf from filme where titulo = 'Jaws'));
+
+3) insert into elenco (codf, codp, codpapel, oscar) values (30,177,5,'N');
+Porém, é necessário cadastrar uma pessoa com o código 177.
+
+4) select f.titulo as nome_do_filme, p.nome as diretor_do_filme from filme f join pessoa p on f.codd = p.codp;
+
+5) select f.titulo as dirigidos_by_Alfred from filme f join pessoa p on f.codd = p.codp where p.nome = 'Alfred';
+
+6) select nome from pessoa p join elenco e on p.codp = e.codp where e.oscar = 'Y';
+
+7) select f.titulo, f.anol, f.dur, p.nome from filme f join elenco e on f.codf = e.codf join pessoa p on e.codp = p.codp;
+
+8) select f.titulo from filme f join avaliacao a on f.codf = a.codf where a.nestrelas = 5;
+
+9) select distinct f.titulo from filme f natural join elenco e join pessoa p on e.codp = p.codp;
+
+10) select p.nome, f.titulo from pessoa p natural left join elenco e natural left join filme f;
+
+11) select p.nome from pessoa p natural left join elenco e natural left join filme f where f.titulo is NULL;
+
+12) select f.titulo from filme f natural left join avaliacao a where a.nestrelas is NULL;
+
+13) select titulo, dur from filme where anol between 1960 and 1969;
+
+14) select p.nome from pessoa p natural join elenco e join papel pp on e.codpapel = pp.codpp where pp.descr = 'Figurante';
+
+15) select count(coment) as n_coment from avaliacao where email = 'cinefilo@gmail.com';
+
+16) select paisn, count(nome) as n_atores from pessoa group by paisn;
+
+17) select nome, dtnasc from pessoa where dtnasc = (select min(dtnasc) from pessoa);
+
+18) select titulo, dur from filme where dur = (select min(dur) from filme );
+
+19) select f.titulo, count(p.nome) as n_atores from filme f natural join elenco e natural join pessoa p group by f.titulo;
+
+20) select f.titulo, round(avg(a.nestrelas),2) as media_estrelas from filme f natural join avaliacao a group by f.titulo;

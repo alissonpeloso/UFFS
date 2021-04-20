@@ -35,6 +35,8 @@ void calcula_bombas(int **field, int size){
                     startj = j-1;
                     endj = j+1;
                 }
+
+                printf("starti= %d, endi = %d - startj= %d, endj = %d\n", starti, endi, startj, endj);
                 
                 for(int k = starti; k <= endi; k++){
                     for(int l = startj; l <= endj; l++){
@@ -50,7 +52,8 @@ void calcula_bombas(int **field, int size){
 }
 
 int mostra_campo(int **interface, int **field, int size){
-    int find_bomb = 0;
+    int situation = 0;
+    int count = 0;
     printf("    0 1 2 3 4 5 6 7\n");
     printf("    _______________\n");
     for(int i = 0; i < size; i++){
@@ -60,9 +63,10 @@ int mostra_campo(int **interface, int **field, int size){
                 printf("- ");
             }
             else if(interface[i][j] == 1){
+                count++;
                 if (field[i][j] == 9){
                     printf("B ");
-                    find_bomb = 1;
+                    situation = 1;
                 }
                 else{
                     printf("%d ", field[i][j]);
@@ -74,7 +78,11 @@ int mostra_campo(int **interface, int **field, int size){
         }
         printf("\n");
     }
-    return find_bomb;
+
+    if(count == size*size-10){
+        situation = 2;
+    }
+    return situation;
 }
 
 int main(){
@@ -105,10 +113,14 @@ int main(){
     int countFlags = 0;
     while (op != 0){
         printf("\n***** Campo Minado *****\n\n");
-        int find_bomb = mostra_campo(interface, field, size);
+        int situation = mostra_campo(interface, field, size);
 
-        if (find_bomb == 1){
+        if (situation == 1){
             printf("\nVocê pisou em uma Mina Terrestre! Não se preocupe, vou consolar sua esposa :D\n");
+            exit(0);
+        }
+        else if(situation == 2){
+            printf("\nParabéns!!! Você sobreviveu.\n");
             exit(0);
         }
         
@@ -144,6 +156,9 @@ int main(){
             else if(interface[i][j] >= 10){
                 interface[i][j] = 0;
                 countFlags--;
+            }
+            else if(interface[i][j] == 1){
+                printf("ERRO: Selecione uma posição válida!\n");
             }
             else{
                 interface[i][j] = 10;

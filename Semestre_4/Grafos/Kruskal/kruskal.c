@@ -1,3 +1,4 @@
+// Autor: Alisson Luan de Lima Peloso
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -168,6 +169,7 @@ void kruskal(Control * control, int n, int *vControl){
     Edges * aux = control->head;
     char path[100] = "\nArestas da árvore geradora mínima:\n\t";
     int visiting = 0;
+    int cost = 0;
     while (aux) {
         int vi = aux->edge->origin->value;
         int vj = aux->edge->destiny->value;
@@ -178,10 +180,15 @@ void kruskal(Control * control, int n, int *vControl){
         if(rooti == rootj){
 
         }
-        else if(vControl[rootj] == vControl[rooti] || vControl[rootj] < vControl[rooti]){
-            vControl[rootj]+= vControl[rooti];
-            vControl[rooti] = rootj;
-
+        else{
+            if(vControl[rootj] == vControl[rooti] || vControl[rootj] < vControl[rooti]){
+                vControl[rootj]+= vControl[rooti];
+                vControl[rooti] = rootj;
+            }
+            else if(vControl[rootj] > vControl[rooti]){
+                vControl[rooti] += vControl[rootj];
+                vControl[rootj] = rooti;
+            }
             char temp[5] = "";
             strcat(path, "(");
 
@@ -192,21 +199,8 @@ void kruskal(Control * control, int n, int *vControl){
             sprintf(temp, "%d", vj);
             strcat(path, temp);
             strcat(path, ") ");
-        }
-        else if(vControl[rootj] > vControl[rooti]){
-            vControl[rooti] += vControl[rootj];
-            vControl[rootj] = rooti;
 
-            char temp[5] = "";
-            strcat(path, "(");
-
-            sprintf(temp, "%d", vi);
-            strcat(path, temp);
-            strcat(path, ",");
-
-            sprintf(temp, "%d", vj);
-            strcat(path, temp);
-            strcat(path, ") ");
+            cost+= aux->edge->weigth;
         }
         printList(control, visiting);
         printVControl(vControl, n, vi, vj);
@@ -214,6 +208,7 @@ void kruskal(Control * control, int n, int *vControl){
 
         if(vControl[rootj] == n*(-1) || vControl[rooti] == n*(-1)){
             printf("\n\t→ Já encontramos a Árvore de Spanning Mínima :D\n");
+            printf("\tCusto Total: %d\n", cost);
             return;
         }
 
