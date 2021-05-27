@@ -21,6 +21,7 @@
 [submodule "Semestre_4/Integrative"]
 	path = Semestre_4/Integrative
 	url = https://github.com/alissonpeloso/Integrative
-[submodule "cache-memory-simulator"]
-	path = cache-memory-simulator
+	
+[submodule "Semestre_4/Organizacao_de_Computadores/cache-memory-simulator"]
+	path = Semestre_4/Organizacao_de_Computadores/cache-memory-simulator
 	url = https://github.com/alissonpeloso/cache-memory-simulator
