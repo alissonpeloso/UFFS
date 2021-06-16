@@ -1,0 +1,10 @@
+-- 2-Crie uma função capaz de retornar um texto passado por argumento
+
+CREATE or REPLACE FUNCTION printText(value text) RETURNS text AS  $$
+BEGIN
+    return value;
+END; 
+$$
+LANGUAGE plpgsql;
+
+select * from printText('oi eu sou goku');

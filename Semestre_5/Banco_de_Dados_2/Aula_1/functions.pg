@@ -1,0 +1,11 @@
+-- 1-Crie uma função capaz de incrementar um dado número
+
+CREATE or REPLACE FUNCTION increment(value int) RETURNS int AS  $$
+BEGIN
+    value= value+1;
+    return value; 
+END; 
+$$
+LANGUAGE plpgsql;
+
+select * from increment(100);

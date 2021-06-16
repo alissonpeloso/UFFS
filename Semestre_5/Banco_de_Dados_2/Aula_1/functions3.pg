@@ -1,0 +1,17 @@
+-- 3- Crie uma tabela com a assinatura “users (id int, nome varchar(50))”. Após inserir 5 tuplas, faça uma função capaz de retornar os nomes com id maiores que a média. 
+
+CREATE table users(id int, nome varchar(50));
+INSERT into users values(1, 'João');
+INSERT into users values(2, 'Maria');
+INSERT into users values(3, 'Pedro');
+INSERT into users values(4, 'São Bento');
+INSERT into users values(5, 'Thiago');
+
+CREATE or REPLACE FUNCTION biggerThanAvg() RETURNS table(nome varchar(50)) AS $$
+BEGIN
+    RETURN QUERY SELECT s.nome FROM users AS s WHERE s.id > (select avg(id) from users);
+END;
+$$
+LANGUAGE plpgsql;
+
+select * from biggerThanAvg();
