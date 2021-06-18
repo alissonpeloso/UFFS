@@ -1,0 +1,8 @@
+-- C) Faça uma função capaz de remover os funcionar com salário acima da média.
+
+CREATE or REPLACE FUNCTION remove_above_avg() RETURNS void AS $$
+BEGIN
+    delete from employee where salary > (select avg(salary) from employee);
+END;
+$$
+LANGUAGE plpgsql;

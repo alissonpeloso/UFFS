@@ -1,0 +1,7 @@
+create table employee (id int, name varchar(50), BirthYear int, salary float);
+
+INSERT into employee values(1, 'João', 2000, 1500.00);
+INSERT into employee values(2, 'Maria', 2001, 2000.00);
+INSERT into employee values(3, 'Pedro', 2002, 1500.00);
+INSERT into employee values(4, 'Sofia', 2003, 1300.00);
+INSERT into employee values(5, 'Marcos', 2004, 1700.00);

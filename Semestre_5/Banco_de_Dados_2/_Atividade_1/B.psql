@@ -1,0 +1,8 @@
+-- B) Faça uma função capaz de aplicar um aumento de X% nos funcionários com id maior que N. Importante: X e N serão passados por argumento. 
+
+CREATE or REPLACE FUNCTION upgrade_salary_porcent(x int, n int) RETURNS void AS $$
+BEGIN
+    update employee set salary = salary + (salary/100*x) where id > n;
+END;
+$$
+LANGUAGE plpgsql;

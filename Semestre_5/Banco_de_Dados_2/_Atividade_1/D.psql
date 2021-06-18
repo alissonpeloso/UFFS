@@ -1,0 +1,15 @@
+-- D) Crie uma função que armazene o usuário corrente e a data atual ao adicionar uma nova tupla na tabela. Ex: insereDados( 10,’joao’,2000’, 1000.00).
+-- *current_user- retorna o usuário atual 
+-- *current_date - retorna a data atual
+-- *ALTER TABLE table_name ADD column_name datatype;
+
+CREATE or REPLACE FUNCTION add_current_info() RETURNS void AS $$
+BEGIN
+    ALTER table employee add column IF NOT EXISTS cur_user varchar(50);
+    ALTER table employee add column IF NOT EXISTS cur_date date;
+
+    UPDATE employee  SET cur_user = current_user where cur_user is NULL;
+    UPDATE employee  SET cur_date = current_date where cur_date is NULL;
+END;
+$$
+LANGUAGE plpgsql;

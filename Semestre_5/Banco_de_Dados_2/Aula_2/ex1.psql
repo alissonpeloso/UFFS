@@ -1,0 +1,22 @@
+create table users (id int, nome varchar(50), salario float);
+INSERT into users values(1, 'João', 1300.00);
+INSERT into users values(2, 'Maria', 1500.00);
+INSERT into users values(3, 'Pedro', 1300.00);
+INSERT into users values(4, 'São Bento', 1800.00);
+INSERT into users values(5, 'Thiago', 1300.00);
+
+CREATE or REPLACE FUNCTION calcula_valor(operacao int) RETURNS boolean AS $$
+BEGIN
+    IF operacao = 1 THEN
+        update users set salario = salario*1.1;
+    ELSE 
+        IF operacao = 2 THEN
+            update users set salario = salario*0.9;
+        END IF;
+    END IF;
+    RETURN FOUND;
+END;
+$$
+LANGUAGE plpgsql;
+
+select * from calcula_valor(1);

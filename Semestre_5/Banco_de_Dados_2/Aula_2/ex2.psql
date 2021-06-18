@@ -1,0 +1,23 @@
+-- A partir da tabela a seguir, crie uma função capaz de atualizar o salário em 5% se o mesmo for menor que 10k e em 1% se o salário for maior que 10k. create table users (id int, nome varchar(50), salario float)
+
+create table users (id int, nome varchar(50), salario float);
+truncate table users;
+INSERT into users values(1, 'João', 1300.00);
+INSERT into users values(2, 'Maria', 1500.00);
+INSERT into users values(3, 'Pedro', 1300.00);
+INSERT into users values(4, 'São Bento', 1800.00);
+INSERT into users values(5, 'Thiago', 1300.00);
+INSERT into users values(6, 'Sedo', 10001.00);
+INSERT into users values(7, 'chato', 9999.00);
+
+
+
+CREATE or REPLACE FUNCTION update_valor() RETURNS void AS $$
+BEGIN
+    update users set salario = salario * 1.01 where salario > 10000;
+    update users set salario = salario * 1.05 where salario < 10000;
+END;
+$$
+LANGUAGE plpgsql;
+
+select * from update_valor();
