@@ -1,0 +1,27 @@
+**Começando e terminando com 'a' e ímpar**
+
+S::= aA
+A::= aB | bB | cB | ε
+B::= aA | bB | cB
+
+S -> aA
+  -> aaB
+  -> aabB
+  
+ -
+  
+S::= aAa
+A::= aB | bB | cB 
+B::= aA | bA | cA | ε
+
+S -> aAa
+  -> aaBa
+  -> aaaAa
+  
+---------------------------------------
+
+**Apenas número ímpar**
+
+S::= aA | bA | cA
+A::= aS | bS | cS | ε
+
