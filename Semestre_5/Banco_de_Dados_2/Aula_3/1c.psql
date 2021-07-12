@@ -1,0 +1,33 @@
+create table if not exists departamento (id integer primary key, 
+orçamento float, 
+nome varchar(50));
+
+create table if not exists empregado (id integer primary key, 
+    nome varchar(50),
+    salario float,
+    dep_id  integer,
+    CONSTRAINT fk_customer
+    FOREIGN KEY(dep_id)     
+    REFERENCES departamento(id));
+
+CREATE or replace FUNCTION check_orçamento() RETURNS TRIGGER AS $$
+DECLARE
+  orc_permitido INT;
+  orc_gasto INT;
+BEGIN
+  SELECT orçamento INTO orc_permitido
+  FROM departamento
+  WHERE id = NEW.dep_id;
+
+  SELECT INTO orc_gasto SUM(salario)
+  FROM empregado
+  WHERE dep_id = NEW.dep_id;
+
+  IF (orc_gasto+New.salario) > orc_permitido THEN
+    RAISE EXCEPTION 'Orçamento acima do teto  [id:%] by [%]', NEW.id, (orc_gasto - orc_permitido);
+  END IF;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+create trigger check_orc before insert or update on empregado for each row execute procedure check_orçamento();

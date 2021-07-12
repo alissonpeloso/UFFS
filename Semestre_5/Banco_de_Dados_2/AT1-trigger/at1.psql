@@ -1,0 +1,10 @@
+-- 1)se o produto em estoque chegar ao valor 0 (não tem mais o produto) então o mesmo deve ser removido das tabelas Product e Stock. A aplicação faz o controle para o caso de quantity=0. 
+
+create or replace function remove_product() returns trigger as $$
+begin
+    delete from product where product.eid in (select stock.eid from product natural join stock where stock.quantity = 0);
+    RETURN NEW;
+end;
+$$ LANGUAGE plpgsql;
+
+create trigger remove_prod after delete or update or insert on stock for each row execute procedure remove_product();
