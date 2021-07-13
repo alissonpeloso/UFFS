@@ -1,3 +1,7 @@
+_Aula 4 - Dia 06/07/2021_
+
+---
+
 ## Venda de certificado de emissão de CO2
 - Vantagens:    
   - Alguns países não tem recurso/tecnologia para continiuar o projeto
