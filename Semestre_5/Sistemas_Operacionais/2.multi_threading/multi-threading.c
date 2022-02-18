@@ -37,10 +37,10 @@ int main(void) {
 
 
 void *mythread(void *data) {
-struct timeval tv;
-struct timezone tz;
-struct tm *tm;
-int id;
+   struct timeval tv;
+   struct timezone tz;
+   struct tm *tm;
+   int id;
    id = *((int *) data);
    
    printf("\n I am thread %d \n", id);
