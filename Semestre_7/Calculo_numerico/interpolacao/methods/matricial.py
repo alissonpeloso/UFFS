@@ -9,7 +9,7 @@ class Matricial():
         self.y = np.array(y)
         self.verify()
 
-    def verify():
+    def verify(self):
         pass
 
     def solve(self):
@@ -17,4 +17,4 @@ class Matricial():
         y = self.y
 
         X = np.linalg.inv(A) @ y
-        return X
+        print(X)
