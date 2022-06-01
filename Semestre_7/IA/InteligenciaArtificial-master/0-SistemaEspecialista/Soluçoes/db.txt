@@ -1,0 +1,15 @@
+agitado-estressado
+agitado-faminto
+agitado-saudavel
+calmo-cansado
+calmo-deprimido
+calmo-saudavel
+alimentado-cansado
+alimentado-estressado
+alimentado-deprimido
+alimentado-saudavel
+nalimentado-faminto
+ambiente_adequado-saudavel
+ambiente_inadequado-estressado
+se_movimenta-cansado
+n_movimenta-deprimido
