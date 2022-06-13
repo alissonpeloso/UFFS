@@ -4,8 +4,8 @@ from methods.method import Method
 from methods.newton import Newton
 from sympy import *
 
-f = "np.log(x) - 2*np.cos(x)"
-epsilon = 0.0000001
+f = "x*(np.cosh(200/x)-1)-100"
+epsilon = 10**(-10)
 r = ""
 
 while r.upper() != "Y":

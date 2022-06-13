@@ -1,12 +1,14 @@
 from methods.jacobi import Jacobi
 from methods.gs import GS
 
-A = [[3, 0.5], [1, -1]]
-b = [3, 1]
+# Tem que colocar . alguma coisa em algum valor, se não for floar ele faz divisão troll
 
-episolon = 0.0000001
+A = [[3, 1, -1], [1, 2, -3.0], [0.5, 1, -5]]
+b = [2, 4, 1.0]
 
-jacob = Jacobi(A, b, episolon)
-jacob.solve()
+episolon = 10**-10
+
+# jacob = Jacobi(A, b, episolon)
+# jacob.solve()
 gs = GS(A, b, episolon)
 gs.solve()
