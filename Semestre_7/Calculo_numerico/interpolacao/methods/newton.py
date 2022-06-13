@@ -16,8 +16,6 @@ class Newton():
         y = 0
         for i in range(size):
             partial = self.getDelta(0, i)
-            print("deltay01 = ", partial)
-
             for j in range(i):
                 partial *= (x - P[j][0])  # (x - xj)
             y += partial

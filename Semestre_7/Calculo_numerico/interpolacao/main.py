@@ -20,8 +20,11 @@ import numpy as np
 # lagrange = Lagrange(P, x)
 # lagrange.solve()
 
-P = [[0, 0], [np.pi/6, 0.5], [np.pi/2, 1]]
-x = 0.2
+# P = [[0, 0], [np.pi/6, 0.5], [np.pi/2, 1]]
+# x = 0.2
+
+P = [[1, 0], [3, 6], [4, 24], [5, 60]]
+x = 6
 
 newton = Newton(P, x)
 newton.solve()
