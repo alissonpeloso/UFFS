@@ -35,11 +35,9 @@ class GS(Method):
         invLD = np.linalg.inv(L + D)
         p1 = invLD.dot(bb)
         p2 = invLD.dot(U)
-        print(x)
         while(np.linalg.norm(AA.dot(x)-bb) >= epsilon):
             x = p1 - (p2.dot(x))
             iterations += 1
-            print(x)
 
         print(x)
         print("iterações: {}".format(iterations))

@@ -34,9 +34,9 @@ class Method:
         if(np.linalg.det(self.A) == 0):
             print("A matriz A não pode ser singular")
             exit(1)
-        # if(not self.isDDM()):
-        #     print("A matriz A não possui diagonal dominante")
-        #     exit(1)
+        if(not self.isDDM()):
+            print("A matriz A não possui diagonal dominante")
+            exit(1)
 
     def getDiagonal1(self):
         A = self.A
@@ -48,8 +48,5 @@ class Method:
             for j in range(A.shape[1]):
                 AA[i][j] = A[i][j]/A[i][i]
             bb[i] = b[i]/A[i][i]
-
-        print("Aqui", AA)
-        print("bb", bb)
 
         return AA, bb

@@ -1,9 +1,10 @@
 from re import X
-import matplotlib.pyplot as plt
 import numpy as np
 
+# Diferenças Divididas
 
-class Newton():
+
+class DD():
     def __init__(self, P, x) -> None:
         self.P = np.array(P)
         self.x = np.array(x)
