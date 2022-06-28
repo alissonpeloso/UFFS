@@ -9,6 +9,7 @@ class DF():
     def __init__(self, P, x) -> None:
         self.P = np.array(P)
         self.x = np.array(x)
+        self.solve()
 
     def solve(self):
         P = self.P
@@ -26,6 +27,7 @@ class DF():
             y += partial
 
         print("P({}) = {}".format(x, y))
+        return y
 
     def getDelta(self, i, n):
         P = self.P

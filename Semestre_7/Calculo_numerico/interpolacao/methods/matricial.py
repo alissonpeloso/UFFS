@@ -7,10 +7,7 @@ class Matricial():
     def __init__(self, A, y) -> None:
         self.A = np.array(A)
         self.y = np.array(y)
-        self.verify()
-
-    def verify(self):
-        pass
+        self.solve()
 
     def solve(self):
         A = self.A

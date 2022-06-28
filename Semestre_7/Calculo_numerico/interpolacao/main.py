@@ -15,37 +15,37 @@ import numpy as np
 # y = [15, 32, 13.0, 30, 10]
 
 # matricial = Matricial(A, y)
-# matricial.solve()
 
 # ----
 # ----
 # ----
 
 # P = [[1, 3], [2, 5]]
-# x = 1.7
+# x = 2
 
 # P = [[0, 0], [np.pi/6, 0.5], [np.pi/2, 1]]
-# x = 0.2
+# x = np.pi/2
 
 # P = [[1, 0], [3, 6], [4, 24], [5, 60]]
 # x = 2
 
 P = [[0, 1], [1, 4], [2, 8]]
-x = 1.3
+x = 2
+
+# P = [[86, 1552], [93.3, 1548], [98.9, 1544], [104.4, 1538], [110, 1532]]
+# x = 110
 
 print("### LAGRANGE ###")
 lagrange = Lagrange(P, x)
-lagrange.solve()
 print()
 
 print("### DIFERENÇAS DIVIDIDAS ###")
 
 dd = DD(P, x)
-dd.solve()
 print()
 
+# Precisa ter o h igual em todos os casos, ou seja, diferença entre os "x" precisam ser iguais.
 print("### DIFERENÇAS FINITAS ###")
 
 df = DF(P, x)
-df.solve()
 print()

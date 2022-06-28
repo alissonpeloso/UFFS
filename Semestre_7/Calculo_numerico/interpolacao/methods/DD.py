@@ -8,6 +8,7 @@ class DD():
     def __init__(self, P, x) -> None:
         self.P = np.array(P)
         self.x = np.array(x)
+        self.solve()
 
     def solve(self):
         P = self.P

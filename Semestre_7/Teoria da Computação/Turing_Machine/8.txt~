@@ -1,0 +1,67 @@
+a)
+c1 = (q1)11
+c2 = x(q3)1
+c3 = x1(q3)
+c4 = x1(qReject)
+
+---
+
+b)
+c1 = (q1)1#1
+c2 = x(q3)#1
+c3 = x#(q5)1
+c4 = x(q6)#x
+c5 = (q7)x#x
+c6 = x(q1)#x
+c7 = x#(q8)x
+c8 = x#x(q8)_
+c9 = x#x_(qAccept)
+
+---
+
+c)
+c1 = (q1)1##1
+c2 = x(q3)##1
+c3 = x#(q5)#1
+c4 = x##(qReject)1
+
+---
+
+d)
+c1 = (q1)10#11
+c2 = x(q3)0#11
+c3 = x0(q3)#11
+c4 = x0#(q5)11
+c5 = x0(q6)#x1
+c6 = x(q7)0#x1
+c7 = (q7)x0#x1
+c8 = x(q1)0#x1
+c9 = xx(q2)#x1
+c10 = xx#(q4)x1
+c11 = xx#x(q4)1
+c12 = xx#x1(qReject)
+
+---
+
+e)
+c1 = (q1)10#10
+c2 = x(q3)0#10
+c3 = x0(q3)#10
+c4 = x0#(q5)10
+c5 = x0(q6)#x0
+c6 = x(q7)0#x0
+c7 = (q7)x0#x0
+c8 = x(q1)0#x0
+c9 = xx(q2)#x0
+c10 = xx#(q4)x0
+c11 = xx#x(q4)0
+c12 = xx#(q6)xx
+c13 = xx(q6)#xx
+c14 = x(q7)x#xx
+c15 = xx(q1)#xx
+c16 = xx#(q8)xx
+c17 = xx#x(q8)x
+c18 = xx#xx(q8)_
+c19 = xx#xx_(qAccept)
+
+

@@ -1,0 +1,1 @@
+Pois é possível simular uma máquina de turing com parada na máquina de turing original, indo para direita e depois retornando a esquerda sempre que precisar manter-se parado. Logo, o poder computacional é o mesmo.
