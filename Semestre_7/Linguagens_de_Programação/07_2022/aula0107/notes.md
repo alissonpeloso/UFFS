@@ -1,0 +1,5 @@
+- Análise Léxica: Vamos fazer em função
+- Análise Sintática: Vamos usar Happy (Existe parsec também, porém é um combinador de parser)
+- Análise Semântica:
+    - Checagem de tipos (type Checker)
+    - Avaliação da expressão.
