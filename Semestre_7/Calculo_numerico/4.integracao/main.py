@@ -5,7 +5,7 @@ import numpy as np
 import sympy as sy
 
 f = "np.exp(x)"
-n = 7
+n = 13
 a = 0
 b = 1
 
