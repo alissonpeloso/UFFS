@@ -1,0 +1,10 @@
+Wu Yangru,  Hua Zhang,
+Forward premiums as unbiased predictors of future currency depreciation: a non-parametric analysis,
+Journal of International Money and Finance,
+Volume 16, Issue 4,
+1997,
+Pages 609-623,
+ISSN 0261-5606,
+https://doi.org/10.1016/S0261-5606(97)00022-3.
+(https://www.sciencedirect.com/science/article/pii/S0261560697000223)
+Abstract: A large body of literature employing regression analysis has reported that the forward premium is not an unbiased predictor of future currency depreciation. Many studies argue that the forward market unbiasedness hypothesis may be falsely rejected due to biased parameter estimates. Possible sources of bias include: the existence of a time-varying risk premium, systematic forecast errors and measurement errors. This paper investigates whether the forward premium can predict the direction of change in the future spot exchange rate using a distribution-free, non-parametric approach. Our tests strongly reject the unbiasedness hypothesis and conclude that the forward premium contains either no information or the ‘wrong’ information about future currency depreciation.

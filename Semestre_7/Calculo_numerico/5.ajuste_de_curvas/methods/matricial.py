@@ -33,6 +33,9 @@ class Matricial():
             A.append(aux)
             Y.append(self.sumXnY(x, i, y))
 
+        print(A)
+        print(Y)
+
         X = np.linalg.inv(np.transpose(A)@A) @ np.transpose(A) @ Y
 
         y_hat = []
@@ -42,12 +45,6 @@ class Matricial():
                 s += X[j]*(x[i]**j)
             y_hat.append(s)
 
-        y_avg = sum(y) / len(y)
-
-        r2_prime = 1 - (sum([(y[i] - y_hat[i])**2 for i in range(len(y))]
-                            ) / sum([(y[i] - y_avg)**2 for i in range(len(y))]))
-
         r2_score = r2(y, y_hat)
-        print(r2_prime)
 
         return X, r2_score
