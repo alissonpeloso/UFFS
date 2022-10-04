@@ -15,5 +15,6 @@
         "span": "cpp",
         "regex": "cpp",
         "valarray": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }
