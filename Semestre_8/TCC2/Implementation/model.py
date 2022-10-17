@@ -53,7 +53,9 @@ class Model:
         self.X_train = np.array(X[:int(size - (size*self.test_size))])
         self.X_test = np.array(X[int(size - (size*self.test_size)) : -1])
         self.y_train = np.array(y[:int(size - (size*self.test_size))])
-        self.y_test = np.array(y[int(size - (size*self.test_size)) : -1])                    
+        self.y_test = np.array(y[int(size - (size*self.test_size)) : -1])     
+
+        print(self.X_train.shape, self.y_train.shape, self.X_test.shape, self.y_test.shape)               
 
     def fit(self, model_name = 'default.h5'):
         X_train, y_train = self.X_train, self.y_train
@@ -79,7 +81,7 @@ class Model:
         regressor.add(Dropout(0.3))
 
         # Camada de Saída
-        regressor.add(Dense(units=1, activation='sigmoid'))
+        regressor.add(Dense(units=self.m_predictions, activation='sigmoid'))
 
         # Building the network
         regressor.compile(optimizer='rmsprop', loss='mean_squared_error',
@@ -90,15 +92,14 @@ class Model:
         rlr = ReduceLROnPlateau(monitor='loss', factor=0.2, patience=5, verbose=1)
         mcp = ModelCheckpoint(filepath='pesos.h5', monitor='loss',
                                 save_best_only=True, verbose=1)
-        regressor.fit(X_train, y_train, epochs=100, batch_size=32,
-                        callbacks=[es, rlr, mcp])
+        regressor.fit(X_train, y_train, epochs=100, batch_size=32,callbacks=[es, rlr, mcp])
 
         regressor.save(model_name)
     
     def test(self, model_name = 'default.h5'):
         regressor = load_model(model_name)
         y_hat = regressor.predict(self.X_test)
-        print(y_hat.shape, self.y_test.shape)
+        print(y_hat[0], self.y_test[0])
         return mean_squared_error(self.y_test[0], y_hat[0])
     
     def predict(self, model_name = 'default.h5'):
@@ -108,5 +109,5 @@ class Model:
 stock = Stock()
 df = stock.getDF('USDBRL=X', 30)
 lstm = Model(df, test_size=0.3)
-# lstm.fit()
-print(lstm.test())
+lstm.fit()
+# print(lstm.test())
