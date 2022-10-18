@@ -1,11 +1,12 @@
 import pandas as pd
 from keras.models import Sequential, load_model
-from keras.layers import Dense, Dropout, LSTM
+from keras.layers import Dense, Dropout, LSTM, Reshape
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
 from routes.Stock import Stock
 from sklearn.preprocessing import MinMaxScaler
 import numpy as np
 from sklearn.metrics import mean_squared_error
+import tensorflow as tf
 
 class Model:
     def __init__(self, dataset, X_columns = ['Close', 'Volume'], y_columns = ['Close'], n_steps = 144, m_predictions = 21, test_size = 0):
@@ -19,6 +20,7 @@ class Model:
         self.y = None
         self.scaler_X = None
         self.scaler_y = None
+        print(self.dataset[-10:-1])
         self.prepare_dataset()
 
     def prepare_dataset(self):
@@ -32,7 +34,6 @@ class Model:
         self.scaler_y = MinMaxScaler(feature_range=(0, 1))
         y_scaled = self.scaler_y.fit_transform(y_unscaled)
 
-
         X, y = list(), list()
         for i in range(len(X_scaled)):
             # find the end of this pattern
@@ -42,7 +43,8 @@ class Model:
             if end_ix > len(X_scaled)-1 or end_iy > len(X_scaled)-1 :
                 break
             # gather input and output parts of the pattern
-            seq_x, seq_y = X_scaled[i:end_ix], y_scaled[end_ix:end_ix+self.m_predictions]
+            seq_x, seq_y = X_scaled[i:end_ix], y_scaled[end_ix:end_ix+self.m_predictions] 
+
             X.append(seq_x)
             y.append(seq_y)
 
@@ -55,12 +57,8 @@ class Model:
         self.y_train = np.array(y[:int(size - (size*self.test_size))])
         self.y_test = np.array(y[int(size - (size*self.test_size)) : -1])     
 
-        print(self.X_train.shape, self.y_train.shape, self.X_test.shape, self.y_test.shape)               
-
     def fit(self, model_name = 'default.h5'):
         X_train, y_train = self.X_train, self.y_train
-
-        print("AQUIII:",y_train.shape[1])
 
         # LSTM structure
         # Camada de entrada
@@ -69,12 +67,12 @@ class Model:
         regressor.add(Dropout(0.3))
 
         # Cada Oculta 1
-        regressor.add(LSTM(units=50, return_sequences=True))
-        regressor.add(Dropout(0.3))
+        # regressor.add(LSTM(units=50, return_sequences=True))
+        # regressor.add(Dropout(0.3))
 
         # Cada Oculta 2
-        regressor.add(LSTM(units=50, return_sequences=True))
-        regressor.add(Dropout(0.3))
+        # regressor.add(LSTM(units=50, return_sequences=True))
+        # regressor.add(Dropout(0.3))
 
         # Cada Oculta 3
         regressor.add(LSTM(units=50))
@@ -82,6 +80,8 @@ class Model:
 
         # Camada de Saída
         regressor.add(Dense(units=self.m_predictions, activation='sigmoid'))
+
+        regressor.add(Reshape((21, 1)))
 
         # Building the network
         regressor.compile(optimizer='rmsprop', loss='mean_squared_error',
@@ -92,22 +92,30 @@ class Model:
         rlr = ReduceLROnPlateau(monitor='loss', factor=0.2, patience=5, verbose=1)
         mcp = ModelCheckpoint(filepath='pesos.h5', monitor='loss',
                                 save_best_only=True, verbose=1)
-        regressor.fit(X_train, y_train, epochs=100, batch_size=32,callbacks=[es, rlr, mcp])
+        regressor.fit(X_train, y_train, epochs=100, batch_size=32 ,callbacks=[es, rlr, mcp])
 
         regressor.save(model_name)
     
     def test(self, model_name = 'default.h5'):
         regressor = load_model(model_name)
         y_hat = regressor.predict(self.X_test)
-        print(y_hat[0], self.y_test[0])
-        return mean_squared_error(self.y_test[0], y_hat[0])
+        y_hat = np.reshape(y_hat, (y_hat.shape[0], y_hat.shape[1]))
+        y_test = np.reshape(self.y_test, (self.y_test.shape[0], self.y_test.shape[1]))
+        y_hat = self.scaler_y.inverse_transform(y_hat)
+        y_test = self.scaler_y.inverse_transform(y_test)
+
+        rmse = np.sqrt(mean_squared_error(y_test, y_hat))
+        print('Test RMSE: %.3f' % rmse)
+
+        mse = mean_squared_error(y_test, y_hat)
+        print('Test MSE: %.3f' % mse)
     
     def predict(self, model_name = 'default.h5'):
         regressor = load_model(model_name)
         return regressor.predict(self.X[-1])
 
 stock = Stock()
-df = stock.getDF('USDBRL=X', 30)
+df = stock.getDF('GC=F', 30)
 lstm = Model(df, test_size=0.3)
 lstm.fit()
-# print(lstm.test())
+lstm.test()
