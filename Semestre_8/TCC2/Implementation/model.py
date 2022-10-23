@@ -81,7 +81,7 @@ class Model:
         regressor.add(Dropout(0.3))
 
         # Camada de Saída
-        regressor.add(Dense(units=self.m_predictions, activation='sigmoid'))
+        regressor.add(Dense(units=self.m_predictions, activation='sigmoid')) ## 8 ou 13
 
         # Building the network
         regressor.compile(optimizer='rmsprop', loss='mean_squared_error',
