@@ -79,7 +79,7 @@ class Model:
         regressor.add(Dropout(0.3))
 
         # Camada de Saída
-        regressor.add(Dense(units=self.m_predictions, activation='sigmoid'))
+        regressor.add(Dense(units=self.m_predictions, activation='sigmoid')) ## 8 ou 13
 
         regressor.add(Reshape((21, 1)))
 
