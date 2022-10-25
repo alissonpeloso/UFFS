@@ -1,18 +1,16 @@
-from argparse import Namespace
-from flask_restful import Resource
-from flask import jsonify
-import numpy as np
-import pandas as pd
-import yfinance as yf
-import plotly.graph_objs as go
 import datetime
+import yfinance as yf
+import pandas as pd
 
-
-class Stock(Resource):
-    def getDF(self, stock, period):
-        period = int(period)
-        stock = str(stock)
-
+class Stock:
+    def __init__(self, stock, period):
+        self.stock = str(stock)
+        self.period = int(period)
+    
+    def getDF(self):
+        period = self.period
+        stock = self.stock
+        
         df = pd.DataFrame()
         for i in range(0, int(period), 7):
             end = datetime.datetime.now() - datetime.timedelta(days=i)
@@ -21,6 +19,3 @@ class Stock(Resource):
                 "%Y-%m-%d"), end.strftime("%Y-%m-%d"), interval="1m")
             df = pd.concat([aux_df, df])
         return df
-
-    def get(self, stock, period):
-        return self.getDF(stock, period).to_json()

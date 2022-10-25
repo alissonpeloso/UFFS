@@ -2,7 +2,7 @@ import pandas as pd
 from keras.models import Sequential, load_model
 from keras.layers import Dense, Dropout, LSTM, Reshape
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
-from routes.Stock import Stock
+from routes.api import Stock
 from sklearn.preprocessing import MinMaxScaler
 import numpy as np
 from sklearn.metrics import mean_squared_error
