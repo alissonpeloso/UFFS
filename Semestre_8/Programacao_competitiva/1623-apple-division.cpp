@@ -3,33 +3,24 @@ using namespace std;
  
 typedef long long ll;
  
-vector<ll> x;
+vector<ll> x,a;
 int n;
-ll sumA=0, sumB=0, sumX=0, diff = 1000000000;
+ll sumA=0, sumX=0, diff = 1000000000, calls = 0;
  
-void search() {
-    if (x.size() == 0) {
-        if(abs(sumA - sumB) < diff) {
-            diff = abs(sumA - sumB);
-        }
+void search(int k) {
+    calls++;
+
+    diff = min(diff, abs(sumA-sumX));
+
+    if (k == n+1) {
         return;
     } else {
-        for (int i = 0; i < x.size(); i++) {
-            ll val = x[i];
-
-            sumA += val;
-            sumX -= val;
-            x.erase(x.begin() + i);
-            search();
-
-            sumA -= val;
-            sumB += val;
-            search();
-
-            x.insert(x.begin() + i, val);
-            sumB -= val;
-            sumX += val;
-        }
+        sumA += x[k];
+        sumX -= x[k];
+        search(k+1);
+        sumA -= x[k];
+        sumX += x[k];
+        search(k+1);
     }
 }
  
@@ -43,7 +34,7 @@ int main()
         x.push_back(aux);
     }
  
-    search();
+    search(0);
 
     cout << diff << endl;
 }
