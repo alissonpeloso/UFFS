@@ -8,7 +8,7 @@ string permutation;
 set<string> strings;
 int n;
 vector<bool> chosen; 
-
+ 
 void search() {
     if (permutation.size() == n) {
         bool test = true;
@@ -42,7 +42,7 @@ int main()
     search();
 
     cout << strings.size() << endl;
-
+ 
     for (auto it = strings.begin(); it != strings.end(); ++it) {
         cout << *it << endl;
     }
