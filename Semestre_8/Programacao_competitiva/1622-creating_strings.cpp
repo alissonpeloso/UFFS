@@ -2,7 +2,7 @@
 using namespace std;
  
 typedef long long ll;
- 
+
 string a;
 string permutation;
 set<string> strings;
@@ -38,9 +38,9 @@ int main()
     for(int i = 0; i < n; i++) {
         chosen.push_back(false);
     }
- 
+
     search();
- 
+
     cout << strings.size() << endl;
  
     for (auto it = strings.begin(); it != strings.end(); ++it) {
