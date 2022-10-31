@@ -1,4 +1,6 @@
 @import './base.css';
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 
 #app {
   width: 100vw;

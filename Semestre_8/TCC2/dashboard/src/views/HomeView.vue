@@ -1,5 +1,6 @@
 <script setup>
-import RadarGraphVue from '../components/RadarGraph.vue';
+// import CandleGraph from "../components/CandleGraph.vue";
+import RadarGraphVue from "../components/RadarGraph.vue";
 </script>
 
 <template>
@@ -11,12 +12,13 @@ import RadarGraphVue from '../components/RadarGraph.vue';
 				</h3>
 			</div>
 			<div class="row flex-fill">
-				<div class="col-3">
-					<RadarGraphVue />
+				<div class="col-2 d-flex flex-column justify-content-evenly">
+					<RadarGraphVue :title="'Compra'" :color="'#00A281'" />
+					<RadarGraphVue :title="'Venda'" :color="'#FF003C'" />
 				</div>
 
-				<div class="col-6">
-					1
+				<div class="col-7">
+					<!-- <CandleGraph /> -->
 				</div>
 
 				<div class="col-3">
