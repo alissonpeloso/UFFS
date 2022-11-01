@@ -7,11 +7,13 @@ import numpy as np
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import tensorflow as tf
 from Stock import Stock
+import json
 
 weightsFolder = 'weights/';
 
 # config object example
-# config = {
+# config = 
+# {
 # 	X_columns : ['Fechamento', 'Volume Quantidade'],
 # 	y_columns : ['Fechamento'],
 # 	n_steps: 144,
@@ -43,21 +45,20 @@ weightsFolder = 'weights/';
 # }
 
 class Model:
-    def __init__(self, config = {}):
+    def __init__(self, config = {}, timeframe = 2, periods = 7200):
         self.config = config
         if (config.get('stock') != None):
-            configStock = config.stock
-            stock = Stock(configStock.timeframe if configStock.get('timeframe') != None else 2, configStock.periods if configStock.get('periods') != None else 7200)
+            stock = Stock(timeframe, periods)
         else:
             stock = Stock(2, 7200)
         dataset = stock.getDF()
 
         self.dataset = dataset.replace({',': '.'}, regex=True)
-        self.X_columns = config.X_columns if config.get('X_columns') != None else ['Fechamento', 'Volume Quantidade']
-        self.y_columns = config.y_columns if config.get('y_columns') != None else ['Fechamento']
-        self.n_steps = config.n_steps if config.get('n_steps') != None else 144
-        self.m_predictions = config.m_predictions if config.get('m_predictions') != None else 13
-        self.test_size = config.test_size if config.get('test_size') != None else 0.0
+        self.X_columns = config['X_columns'] if config.get('X_columns') != None else ['Fechamento', 'Volume Quantidade']
+        self.y_columns = config['y_columns'] if config.get('y_columns') != None else ['Fechamento']
+        self.n_steps = config['n_steps'] if config.get('n_steps') != None else 144
+        self.m_predictions = config['m_predictions'] if config.get('m_predictions') != None else 13
+        self.test_size = config['test_size'] if config.get('test_size') != None else 0.0
         self.X = None 
         self.y = None
         self.scaler_X = None
@@ -102,7 +103,7 @@ class Model:
     def fit(self, model_name = 'default.h5'):
         X_train, y_train = self.X_train, self.y_train
 
-        layers = self.config.layers
+        layers = (self.config['layers'] if self.config.get('layers') != None else [])
 
         if (len(layers) == 0):
             layers = [
@@ -182,5 +183,7 @@ class Model:
         y_hat = np.reshape(y_hat, (y_hat.shape[0], y_hat.shape[1]))
         return self.scaler_y.inverse_transform(y_hat)
 
-lstm = Model()
-lstm.predict("2min_default.h5")
+with open('config/1.json') as json_file:
+    config = json.load(json_file)
+    lstm = Model(config, 2, 7200)
+    lstm.test("2min_default.h5")
