@@ -4,20 +4,61 @@ from keras.layers import Dense, Dropout, LSTM, Reshape
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
 from sklearn.preprocessing import MinMaxScaler
 import numpy as np
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import tensorflow as tf
 from Stock import Stock
 
+weightsFolder = 'weights/';
+
+# config object example
+# config = {
+# 	X_columns : ['Fechamento', 'Volume Quantidade'],
+# 	y_columns : ['Fechamento'],
+# 	n_steps: 144,
+# 	m_predictions: 21,
+# 	test_size = 0.0,
+# 	layers : [
+# 		{
+# 			units: 100,
+# 			dropout: 0.3,
+# 		},
+# 		{
+# 			units: 50,
+# 			dropout: 0.3,
+# 		},
+# 		{
+# 			units: 50,
+# 			dropout: 0.3,
+# 		},
+# 		{
+# 			units: 50,
+# 			dropout: 0.3,
+# 		}
+# 	],
+# 	epochs : 100,
+# 	stock : {
+#         timeframe : 2,
+#         periods : 7200,
+#   }
+# }
 
 class Model:
-    def __init__(self, dataset, X_columns = ['Fechamento'], y_columns = ['Fechamento'], n_steps = 144, m_predictions = 21, test_size = 0.0):
+    def __init__(self, config = {}):
+        self.config = config
+        if (config.get('stock') != None):
+            configStock = config.stock
+            stock = Stock(configStock.timeframe if configStock.get('timeframe') != None else 2, configStock.periods if configStock.get('periods') != None else 7200)
+        else:
+            stock = Stock(2, 7200)
+        dataset = stock.getDF()
+
         self.dataset = dataset.replace({',': '.'}, regex=True)
-        self.X_columns = X_columns
-        self.y_columns = y_columns
-        self.n_steps = n_steps
-        self.m_predictions = m_predictions
-        self.test_size = test_size
-        self.X = None
+        self.X_columns = config.X_columns if config.get('X_columns') != None else ['Fechamento', 'Volume Quantidade']
+        self.y_columns = config.y_columns if config.get('y_columns') != None else ['Fechamento']
+        self.n_steps = config.n_steps if config.get('n_steps') != None else 144
+        self.m_predictions = config.m_predictions if config.get('m_predictions') != None else 13
+        self.test_size = config.test_size if config.get('test_size') != None else 0.0
+        self.X = None 
         self.y = None
         self.scaler_X = None
         self.scaler_y = None
@@ -61,28 +102,44 @@ class Model:
     def fit(self, model_name = 'default.h5'):
         X_train, y_train = self.X_train, self.y_train
 
+        layers = self.config.layers
+
+        if (len(layers) == 0):
+            layers = [
+                {
+                    'units': 100,
+                    'dropout': 0.3,
+                },
+                {
+                    'units': 50,
+                    'dropout': 0.3,
+                },
+                {
+                    'units': 50,
+                    'dropout': 0.3,
+                },
+                {
+                    'units': 50,
+                    'dropout': 0.3,
+                }
+            ]
+
         # LSTM structure
-        # Camada de entrada
         regressor = Sequential()
-        regressor.add(LSTM(units=100, return_sequences=True, input_shape=(X_train.shape[1], len(self.X_columns))))
-        regressor.add(Dropout(0.3))
 
-        # Cada Oculta 1
-        regressor.add(LSTM(units=50, return_sequences=True))
-        regressor.add(Dropout(0.3))
+        for index, layer in enumerate(layers):
+            if (index == 0):
+                regressor.add(LSTM(units=layer['units'], return_sequences=True, input_shape=(X_train.shape[1], len(self.X_columns))))
+            elif (index == len(layers) - 1):
+                regressor.add(LSTM(units=layer['units']))
+            else:
+                regressor.add(LSTM(units=layer['units'], return_sequences=True))
+            regressor.add(Dropout(layer['dropout']))
 
-        # Cada Oculta 2
-        regressor.add(LSTM(units=50, return_sequences=True))
-        regressor.add(Dropout(0.3))
-
-        # Cada Oculta 3
-        regressor.add(LSTM(units=50))
-        regressor.add(Dropout(0.3))
-
-        # Camada de Saída
+        # Output layer
         regressor.add(Dense(units=self.m_predictions, activation='sigmoid')) ## 8 ou 13
 
-        regressor.add(Reshape((21, 1)))
+        regressor.add(Reshape((self.m_predictions, 1)))
 
         # Building the network
         regressor.compile(optimizer='rmsprop', loss='mean_squared_error',
@@ -95,28 +152,35 @@ class Model:
                                 save_best_only=True, verbose=1)
         regressor.fit(X_train, y_train, epochs=100, batch_size=32 ,callbacks=[es, rlr, mcp])
 
-        regressor.save(model_name)
+        regressor.save(weightsFolder+model_name)
     
     def test(self, model_name = 'default.h5'):
-        regressor = load_model(model_name)
+        regressor = load_model(weightsFolder+model_name)
         y_hat = regressor.predict(self.X_test)
         y_hat = np.reshape(y_hat, (y_hat.shape[0], y_hat.shape[1]))
         y_test = np.reshape(self.y_test, (self.y_test.shape[0], self.y_test.shape[1]))
         y_hat = self.scaler_y.inverse_transform(y_hat)
         y_test = self.scaler_y.inverse_transform(y_test)
 
-        rmse = np.sqrt(mean_squared_error(y_test, y_hat))
-        print('Test RMSE: %.3f' % rmse)
-
         mse = mean_squared_error(y_test, y_hat)
-        print('Test MSE: %.3f' % mse)
+        print('MSE: %.3f' % mse)
+
+        rmse = np.sqrt(mse)
+        print('RMSE: %.3f' % rmse)
+
+        mae = mean_absolute_error(y_test, y_hat)
+        print('MAE: %.3f' % mae)
+
+        r2 = r2_score(y_test, y_hat)
+        print('R2: %.3f' % r2)
+
     
     def predict(self, model_name = 'default.h5'):
-        regressor = load_model(model_name)
-        return regressor.predict(self.X[-1])
+        regressor = load_model(weightsFolder+model_name)
+        test = self.X[-1].reshape(1, self.X[-1].shape[0], self.X[-1].shape[1])
+        y_hat = regressor.predict(test)
+        y_hat = np.reshape(y_hat, (y_hat.shape[0], y_hat.shape[1]))
+        return self.scaler_y.inverse_transform(y_hat)
 
-stock = Stock(2, 7200)
-df = stock.getDF()
-lstm = Model(df, test_size=0.3)
-lstm.fit("2min_default.h5")
-lstm.test("2min_default.h5")
+lstm = Model()
+lstm.predict("2min_default.h5")
