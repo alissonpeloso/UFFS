@@ -1,5 +1,5 @@
 <script setup>
-// import CandleGraph from "../components/CandleGraph.vue";
+import CandleGraph from "../components/CandleGraph.vue";
 import RadarGraphVue from "../components/RadarGraph.vue";
 </script>
 
@@ -18,7 +18,7 @@ import RadarGraphVue from "../components/RadarGraph.vue";
 				</div>
 
 				<div class="col-7">
-					<!-- <CandleGraph /> -->
+					<CandleGraph />
 				</div>
 
 				<div class="col-3">

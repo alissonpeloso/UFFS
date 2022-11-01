@@ -2,15 +2,16 @@ import pandas as pd
 from keras.models import Sequential, load_model
 from keras.layers import Dense, Dropout, LSTM, Reshape
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
-from routes.api import Stock
 from sklearn.preprocessing import MinMaxScaler
 import numpy as np
 from sklearn.metrics import mean_squared_error
 import tensorflow as tf
+from Stock import Stock
+
 
 class Model:
-    def __init__(self, dataset, X_columns = ['Close', 'Volume'], y_columns = ['Close'], n_steps = 144, m_predictions = 21, test_size = 0):
-        self.dataset = dataset
+    def __init__(self, dataset, X_columns = ['Fechamento'], y_columns = ['Fechamento'], n_steps = 144, m_predictions = 21, test_size = 0.0):
+        self.dataset = dataset.replace({',': '.'}, regex=True)
         self.X_columns = X_columns
         self.y_columns = y_columns
         self.n_steps = n_steps
@@ -67,12 +68,12 @@ class Model:
         regressor.add(Dropout(0.3))
 
         # Cada Oculta 1
-        # regressor.add(LSTM(units=50, return_sequences=True))
-        # regressor.add(Dropout(0.3))
+        regressor.add(LSTM(units=50, return_sequences=True))
+        regressor.add(Dropout(0.3))
 
         # Cada Oculta 2
-        # regressor.add(LSTM(units=50, return_sequences=True))
-        # regressor.add(Dropout(0.3))
+        regressor.add(LSTM(units=50, return_sequences=True))
+        regressor.add(Dropout(0.3))
 
         # Cada Oculta 3
         regressor.add(LSTM(units=50))
@@ -114,8 +115,8 @@ class Model:
         regressor = load_model(model_name)
         return regressor.predict(self.X[-1])
 
-stock = Stock()
-df = stock.getDF('GC=F', 30)
+stock = Stock(2, 7200)
+df = stock.getDF()
 lstm = Model(df, test_size=0.3)
-lstm.fit()
-lstm.test()
+lstm.fit("2min_default.h5")
+lstm.test("2min_default.h5")
