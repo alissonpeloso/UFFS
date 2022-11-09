@@ -5,35 +5,38 @@ typedef long long ll;
  
 int main()
 {
-    ll n, m, k, cont = 0;
+    ll n, m, k, cont = 0, x;
     cin>>n>>m>>k;
-    ll a[n];
-    ll b[m];
+    vector<ll> a;
+    vector<ll> b;
+
     for(ll i=0;i<n;i++) {
-        cin>>a[i];
+        cin>>x;
+        a.push_back(x);
     }
  
     for(ll i=0;i<m; i++) {
-        cin>>b[i];
+        cin>>x;
+        b.push_back(x);
     }
  
-    sort(a,a+n);
-    sort(b,b+m);   
- 
-    vector<ll> search_vector(b,b+m);
+    sort(a.begin(),a.end());
+    sort(b.begin(),b.end());
 
-    vector<ll>::iterator it = upper_bound(search_vector.begin(), search_vector.end(), b[m-1]+k);
-    search_vector = vector<ll>(search_vector.begin(), it);
+    ll startA = 0, startB = 0, endA = n-1, endB = m-1, index;
 
-    for(auto i:a) {
-        it = lower_bound(search_vector.begin(), search_vector.end(), i-k);
-        if(*it <= i+k ) {
+    vector<ll>::iterator it;
+
+    while (startA <= endA) {
+        index = lower_bound(b.begin()+startB, b.begin()+endB, a[startA]-k) - b.begin();
+        if(b[index] >= a[startA]-k && b[index] <= a[startA]+k) {
             cont++;
-            it++;
-            search_vector = vector<ll>(it, search_vector.end());
+            startB = index + 1;
         } else {
-            search_vector = vector<ll>(it, search_vector.end());
+            startB = index;
         }
+
+        startA++;
     }
  
     cout<<cont<<endl;
