@@ -74,3 +74,5 @@
   - Som de comunicação: possibilita a comunicação entre os usuários ques estão em um mesmo ambiente.
   - Sourround 7.1: primeiro digito representa o número distinto de canais direcionais de audio, o segundo o número de canais omnidirecionais de baixa frequência.
   - Som ambiente é mais complicado do que a simples divisão entre os canais, pois o som pode ser refletido em diversos objetos, e o usuário precisa perceber a direção do som, existem diversas variáveis que precisam ser consideradas.
+
+<!-- página 12 -->
