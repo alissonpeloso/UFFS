@@ -64,15 +64,27 @@
 
 ### Ferramentas do metaverso
 - o realismo imersivo, trazendo qualidade na imersão do usuário. Entrega de detalhes, para ampliar o engajamento psicológico e emocional com o ambiente.
-- Percepção em tempo real: com frames superiores a 30 quadros p segundo (permite perceber o movimento);
+- **Percepção em tempo real:** com frames superiores a 30 quadros p segundo (permite perceber o movimento);
   - Ideia da arte como percepção visual, nosso cérebro reage melhor a cenas e imagens do que apenas texto.
   - OpenGL: um passo significativo para a eveolução do visual dos mundos virtuais. Questão do realismo das sombras, das luzes, dos reflexos, etc. Gráficos são representados por diversos poligonos em formato de vetores que geram essa imagem.
   - Separação do processamento dos vértices com as sombras.
 - Evolução do 3D, problema de ter de usar um óculos 3D pra isso em cinemas.
-- Qualidade de Audio: 3D surround, que permite que o usuário perceba a direção do som, e a distância do som.
+- **Qualidade de Audio:** 3D surround, que permite que o usuário perceba a direção do som, e a distância do som.
   - Som ambiente: traz a ideia de que o usuário está em um ambiente real, com sons de passos, de animais, etc.
   - Som de comunicação: possibilita a comunicação entre os usuários ques estão em um mesmo ambiente.
   - Sourround 7.1: primeiro digito representa o número distinto de canais direcionais de audio, o segundo o número de canais omnidirecionais de baixa frequência.
   - Som ambiente é mais complicado do que a simples divisão entre os canais, pois o som pode ser refletido em diversos objetos, e o usuário precisa perceber a direção do som, existem diversas variáveis que precisam ser consideradas.
+  - binaural audio: necessita de fones de ouvido. Ele considera o formato da cabeça da pessoa, e a posição dos ouvidos, e a distância entre eles, para gerar o som de acordo com a posição do usuário.
+- **Toque:** o tato possuí uma interpretação mais ampla do que o som ou a visão. A ideia é ter respostas de interações por toque, como tocar em um objeto e sentir a textura, ou tocar em um objeto e sentir a temperatura, etc.
+  - Atualmente temos as vibrações, que são uma forma de simular o toque em videogames, principalmente.
+  - E a resposta a movimentos, por exemplo o kinect, que permite que o usuário se movimente e o jogo reconheça os movimentos.
+  - Nesse ponto, estamos bem distantes de algo mais realístico.
+  - Existem algumas pesquisas em simulações sociais (abraço, toque, cócegas, etc). Para isso é necessário uma roupa que possua sensores de pressão, e um sistema de computação que possa interpretar esses dados.
+- **Outros sentidos e estímulos:** Cheiro e gosto, balanço, aceleração, temperatura, direção, tempo, etc.
+  - Existe o balanço e aceleração para simuladores de voo, por exemplo.
+- **Gestos e Expressões:** movimento da boca ao falar, expressões faciais, etc.
+  - Reconhecimento de partes do corpo humano, realismo de posturas, gestos e expressões.
+  - Nas pesquisas há a busca de captura da emoção humana.
+  - Naturalidade nas ações dos avatares.
+  - Excessos de dispositivos de entrada podem ser prejudiciais para a imersão do usuário.
 
-<!-- página 12 -->
