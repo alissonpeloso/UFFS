@@ -1,0 +1,17 @@
+- ONU é composta por estados e não povos, Estados não querem perder a soberania.
+- Direitos humanos não são inclusos para quem não está incluso em uma nação que introduz o direito, não há direito internacional para povos sem nação. Migrantes, Foragidos, Refugiados, etc.
+- Perdendo-se a democracia por movimentos totalitáristas e que desacatam os direitos humanos'
+- **Declaração Universal dos Direitos Humanos (1948)**:
+  - Direitos humanos começa com Ciro o Grande, liberou os escravos.
+  - **Universalidade:** condição humana é o único requisito para titularidade do direito.
+  - **Indivisibilidade:** direitos civis e políticos são condição para os econômicos, sociais e culturais.
+  - Liga das Nações, ONU, Conselho de Segurança, etc.
+  - Direitos Liberais (Séc XIX): Direito de ir e vir, direito a vida, direito de votar, etc.
+  - Pacto de União != Pacto de Submissão
+  - Valor mais ético/político e menos jurídico
+  - Realidade X Pactos
+  - Direitos Socialistas (Séc XX): Direito a educação, direito a saúde, direito a moradia, etc.
+  - Contrato Social: Direitos e Deveres.
+  - Democracia: direitos políticos, mais empoderamento, mais pressão e articulação.
+  - Direitos civis, políticos + sociais, econômicos e culturais -> Voz ao Sul, desenvolvimento, inclusão e luta contra a violação de direitos.
+    - Outros enfoques: equidade, diversidade étnica, gênero, etc. Reconhecimento de identidades, redistribuição.
