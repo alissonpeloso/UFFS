@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.vue": "vue",
         "iostream": "cpp",
         "deque": "cpp",
         "string": "cpp",
@@ -17,7 +18,12 @@
         "valarray": "cpp",
         "ostream": "cpp",
         "chrono": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "bit": "cpp",
+        "*.tcc": "cpp",
+        "bitset": "cpp",
+        "limits": "cpp",
+        "ratio": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
