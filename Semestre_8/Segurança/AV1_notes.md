@@ -188,3 +188,99 @@ adequadas para cada situação
 
 - Resposta = V V F F F V V V
    - ICP: Infraestrutura de Chaves Públicas 
+
+---
+
+## Criptomoedas e NFTs:
+- **Criptomoedas:** são moedas digitais que utilizam criptografia para controlar a criação de unidades monetárias e verificar a transferência de fundos, operando de forma descentralizada. Ideia de moeda de troca rápida, porém, ficou muito valorizada e custosa para realizar as transações.
+- **NFTs:** são ativos digitais únicos e não substituíveis, que podem ser criados, armazenados e negociados na blockchain. São usados para representar ativos físicos, como obras de arte, colecionáveis, ingressos, etc.
+
+### Criptomoedas:
+- criptografia garante que não seja possível falsificar moedas, mantém saldo sempre válido. Operações com segurança, confiança e validade.
+- Descentralizadas. Governo e países não afetam a moeda com inflação ou criação de novas moedas.
+- Computação distribuída e paralela.
+- Ideia do proof of work (POW) ou proof of stake (POS);
+  - POW: disperdício de energia, mineradores competem para resolver um problema matemático, que é a validação da transação. Quem resolver primeiro, ganha a recompensa.
+  - POS: mineradores são os donos das moedas, que validam as transações e recebem recompensas. Quanto mais moedas, maior a chance de ganhar a recompensa. Ideia da recompensa por investir na moeda.
+
+- **Vantagens:** 
+    - Transações rápidas e baratas. (perdeu isso com o aumento de valor)
+    - Imunes, em teoria, do controle estatal. Existe excessões, como a China que proibiu. Geralmente é tratado como ativo financeiro e não uma moeda de troca.
+    - Desassociadas a economia local de países. Mas são sucetíveis a economia global.
+    - Mais robustas quanto a falhas localizadas por ser decentralizada.
+    - Investimento de alto rico, mas pode trazer grandes lucros em pouco tempo.
+- **Desvantagens:**
+    - Alta volatilidade
+    - Elevado consumo de energia
+    - Uso para atividades criminosas: lavagem de dinheiro e comércio ilegal.
+    - Legalidade ainda em estudo/discussão em diversos países.
+    - distribuição e trabalho de mineração concentrada em poucos "usuários".
+    - Carteira e acesso podem ser vulneráveis a ataques. Se perder acesso, não tem suporte nem a quem recorrer.
+
+#### Bitcoin:
+- Criado em 2009 por Satoshi Nakamoto.
+- primeiro blockchain eficiente.
+- Jamais existirá mais de 21 milhões de bitcoins. Em 2140, não haverá mais mineração de bitcoins.
+- **prova de trabalho:** usuário da rede disponibiliza máquina pra processar as transações. Prova de trabalho é feita por mineradores, que resolvem um problema com Hash. Primeiros a resolver realizam o processamento da transação e recebem uma recompensa em bitcoin.
+  - Se passar, recebe 1 bloco de transações para computar. É necessário que vários computadores façam essa computação, para segurança. 
+  - A dificuldade do processamento (entrada) vai depender da quantidade de transações na fila.
+  - Uma transação só é computada se a maioria validar. 
+  - Disperdício de energia para computação para a prova.
+- **prova de participação:** mineradores são os donos das moedas, que validam as transações e recebem recompensas. Quanto mais moedas, maior a chance de ganhar a recompensa. Ideia da recompensa por investir na moeda.
+- **Blockchain:**
+  - estrutura de dados dividindo todas as transações em blocos lineares.
+  - todos os usuários da rede tem uma cópia dos dados da blockchain.
+  - informações criptografadas, pessoas identificadas com certificado digital, não é possível saber quem é. Só se tem essa informação durante o processamento da transação para quem faz parte da transação.
+  - lista encadeada indentificada por hash. Blocos tem hash do bloco anterior, para garantir a integridade da informação. Qualquer alteração em algum dos blocos invalida todos os blocos seguintes, pois o hash altera. Rede só permite que seja adicionado blocos, não é possível alterar ou remover blocos.
+
+### NFTs:
+- **NFT:** Non-Fungible Token
+- É um token que representa um ativo digital único, está ligado a uma blockchain. (geralmente Ethereum)
+- Não tem valor definido e não pode ser trocado por algo equivalente.
+- cada objeto digital tem hash criptografico único.
+- É possível ter réplicas, mas é definido o número de réplicas existentes e há um hash específico para cada réplica.
+- Tudo que é NFT é armazenado em uma blockchain.
+- Possibilidade de validar que alguém é o dono do NFT.
+- Só pode comercializar quem é dono do NFT.
+- O criador no NFT é imutável, mas o dono pode mudar.
+- Criador do NFT pode cobrar royalties por revendas.
+
+---
+
+## LGPD e Legislação
+Regulamentação sobre segurança de sisemas no Brasil.
+
+### Política Nacional de Segurança das Informações
+- 2000 - Decreto 3505:
+  - Confidencialidade, integridade e autenticidade dados sencíveis. 
+  - Eliminar dependência externa.
+  - capacitação e qualidifcação de pessoal e tecnologia relacionados a segurança.
+  - promover produtos e serviços de segurança.
+- 2001 - Medida provisória 2200-2:
+  - Instituição do ICP-Brasil (Infraestrutura de Chaves Públicas Brasileira) e Instituto Nacional de Tecnologia da Informação (ITI).
+- **LGPD:** implementada em 2018 e que foi adiada por conta da adaptação dos sistemas até 2021, possui uma abrangência mais geral, incluindo todos os sistemas. Antes desta lei existir os crimes que aconteciam na internet eram julgados através de leis existentes na constituição, e muitas vezes não existia uma tradução direta, então dessa forma os autores dos crimes não recebiam penalidade alguma.
+    - Prevê penalidades que vão desde advertência até multa de até 2% do faturamento anual da empresa (limitado a R$ 50 milhões).
+
+### e-Direito
+- direito se condutas criminosas "virtuais" só podem ser julgadas se houver uma lei específica para isso.
+- Delegacias especializadas em crimes virtuais.
+Sobre a aplicação das leis/penalidades descritas nos slides:
+  - No início se teve muito medo, pois todos os sistemas teriam que se adaptar rapidamente e etc, com medo de que fosse fiscalizado. Mas na realidade a cobrança destas leis se aplicam através de denúncias, sem a fiscalização ativa dos órgãos responsáveis.
+
+## Auditoria de Sistemas
+- **Auditoria de Sistemas:** é um processo sistemático de avaliação e verificação de informações, documentos, processos, sistemas e pessoas, com o objetivo de emitir um parecer sobre a conformidade com normas, procedimentos, políticas, leis e regulamentos, com foco em sistemas de informação.
+- Foco nos pilares de segurança: integridade, disponibilidade confidencialidade, não-repúdio e autenticidade. além de satisfação dos usuários, regras interntas, tratamento de dados, eficiência, usabilidade.
+- documentar e propor melhorias.
+- resolução de riscos, problemas e falhas.
+
+### Interna: 
+Equipe interna da própria empresa, ideal que seja uma equipe diferente da de desenvolvimento e manutenção.
+### Externa:
+Contratação de equipe externa. Verificar conformidades.
+Ocorre quando empresas estão em processos legais talvez para investigar um crime ou algo do tipo.
+
+- Analisar os sistemas com o fim de verificar se está seguro, se tem uma usabilidade boa.
+- Em geral é fazer uma vistoria para ver se tudo está de acordo com as leis que se aplicam, e também para encontrar fatores de risco para o sistema, falhas e etc.
+- Deveria ser realizado em todas as etapas de desenvolvimento, implementação e etc.
+- Pode ser feito de maneira interna, uma equipe que valida estas coisas(QA/quality ?assurance?), ou externa, um terceiro que valida seu sistema, uma outra visão.
+- acredite , as ISO são pagas, sobre segurança e auditoria é a faixa 27000
